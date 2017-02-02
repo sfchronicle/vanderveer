@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= json.project.seo_title %></title>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="__sync_contentCategory" content="meterA">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <%= !json.project.embedded ? t.include("partials/_paywall.html") : t.include("partials/_embedframe.html") %>
+
+    <%= t.include("partials/_head.html") %>
+
+  </head>
+
+  <%= !json.project.embedded ? "<body>" : "<body is='responsive-body'>" %>
+
+    <%= t.include("partials/_nav.html") %>
+
+
+    <div class="flex-container">
+        
+        <div class="milestone intro">
+          <img src="http://ww3.hdnux.com/photos/56/71/61/12295262/5/500x0.jpg">
+          <h1>Pursuit of 1,000</h1>
+          <%= t.include("partials/_social.html") %>
+          <% json.intro.forEach(function(intro) { %>
+          <p><%= intro.intro %></p>
+          <% }); %>
+          <script type="text/javascript">console.log()</script>
+          <div class="arrow">
+            <span>Scroll right</span><br>
+            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+          </div>
+        </div>
+
+
+
+        <% json.timeline.forEach(function(t) { %>
+
+
+
+        <% if (t.class == 'text') { %>
+          <div class="milestone text">
+            <h2><%= t.number %></h2>
+            <p class="date"><%= t.date %></p>
+            <p><%= t.display_text %></p>       
+          </div>
+
+        <% } %>
+
+          <% if (t.class == 'bg') { %>
+          <div class="milestone bg" style="background-image: url(<%= t.img %>); background-size:<%= t.img_size %>;">
+            <span class="win"><%= t.number %></span>
+          </div>
+
+          <% } %>
+
+          <% if (t.class == 'img-text') { %>
+          <div class="milestone img-text">
+            <h2><%= t.number %></h2>
+            <div class="img">
+              <img src="<%= t.img %>">
+            </div>
+            <p class="date"><%= t.date %></p>
+            <p><%= t.display_text %></p>
+          </div>
+
+          <% } %>
+
+         <% }); %>
+
+    </div>
+
+    <script src="app.js" async></script>
+    <script>
+
+
+$(document).on('mousewheel', function(e) {
+
+  //e.preventDefault(); /** optional, you might want to try it **/
+
+  
+  
+  /** elements to bounce to: **/
+  var elements = $(".milestone"); 
+  
+  /** get the next/previous element based on the scrolling direction: **/
+  var elementToScrollTo = elements.eq(0);
+  var scrollDirection = "left";
+  if (e.originalEvent.wheelDelta >= 0) {
+    scrollDirection = "right";
+    elements = $(elements.get().reverse());
+  }
+
+  elements.each(function() {
+    var scrollTop = $(window).scrollLeft(),
+      elementOffset = $(this).offset().left,
+      distance = (elementOffset - scrollTop);
+    if (scrollDirection === "left") {
+      if (distance >= 0) {
+        elementToScrollTo = $(this);
+        return false;
+      }
+    } else {
+      if (distance < 0) {
+        elementToScrollTo = $(this);
+        return false;
+      }
+    }
+  });
+   /** scrollTo $elementToScrollTo but only if the user stopped scrolling **/
+  clearTimeout($.data(this, 'scrollTimer'));
+  $.data(this, 'scrollTimer', setTimeout(function() { //user stopped scrolling
+    scrollTo(elementToScrollTo);
+  }, 80));
+
+});
+
+
+function scrollTo(el) {
+  $('html,body').animate({
+    scrollLeft: $(el).offset().left
+  }, 100);
+}
+    </script>
+    <%= t.include("partials/_helloSFC.html") %>
+
+  </body>
+</html>

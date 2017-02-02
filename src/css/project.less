@@ -1,0 +1,197 @@
+header{
+  opacity: 1;
+  background: none;
+  box-shadow: none;
+  height: 0;
+}
+
+.logo-link{
+  margin: 5px 0;
+}
+
+.link{
+  font-size:26px;
+  line-height:0;
+}
+
+body{
+  background-color:whitesmoke;
+}
+
+.flex-container {
+   display: -webkit-box;
+   display: -moz-box;
+   display: -ms-flexbox;
+   display: -webkit-flex;
+   display: flex;
+   flex-flow:row;
+   align-items:center;
+   height:100%;
+   position:absolute;
+   width:100%;
+
+   @media (max-width: 769px) and (orientation: landscape){
+    align-items:initial;
+  }
+}
+
+.milestone {
+  position:relative;
+  padding: 12px;
+  color:black;
+  font-size:22px;
+  background-color: whitesmoke;
+  text-align:center;
+  width:100%;
+  flex:none;
+  -webkit-flex:none;
+  overflow-y:scroll;
+
+   &.bg{
+    background-position:center;
+    background-repeat:no-repeat;
+    height:100%;
+    background-color: #3e3e3e;
+    -webkit-box-shadow: inset 0px -52px 53px 9px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px -52px 53px 9px rgba(0,0,0,0.75);
+    box-shadow: inset 0 -52px 53px 9px rgba(0,0,0,0.75);
+
+    span{
+     position: absolute;
+      left: 20px;
+      bottom: 0;
+      color: #fff;
+      font-size: 1.5em;
+      font-family:@med-graphics;
+    }
+   }
+}
+
+
+.intro{
+  padding:0;
+  overflow-y:scroll;
+
+  img{
+  max-width:500px;
+  width:100%;
+  }
+
+  p{
+    margin: 0 auto 1em;
+    max-width: 710px;
+    padding: 0 10px;
+
+    @media @tablet{
+    font-size:0.7em;
+    }
+  }
+
+  h1{
+    font-size: 3em;
+    font-family:@bold-graphics;
+    letter-spacing:4px;
+    margin:0;
+
+    @media @mobile{
+    letter-spacing:0;
+    }
+
+    @media @tablet{
+      font-size:1.5em;
+      line-height: 1.2;
+      margin-bottom: 0.2em;
+    }
+  }
+}
+
+.arrow{
+  font-size:2em;
+  margin:0;
+  line-height:0;
+
+  @media @mobile{
+    font-size:2.5em;
+  }
+
+  span{
+    font-size:15px;
+    line-height:0;
+    text-transform:uppercase;
+    font-family:@med-graphics;
+
+    @media @mobile{
+
+    }
+  }
+}
+
+.fa-long-arrow-right{
+  display: block;
+  margin-top: 16px;
+}
+
+.img-text{
+    
+  h2{
+    font-family: @bold-graphics;
+    font-size: 5em;
+    margin: 0;
+    color:#8c1515;
+  }
+
+  p{
+    font-size:0.9em;
+    padding:0;
+    line-height:1.4;
+    margin:0 auto;
+    font-family:@med-graphics;
+    
+    &.date{
+      font-size:1.5em;
+      line-height:1.2;
+    }
+  }
+
+
+  .img{
+    max-width:300px;
+    margin:0 auto;
+  }
+  img{
+    width:100%;
+  }
+
+}
+
+.text{
+    
+  h2{
+    font-family: @bold-graphics;
+    font-size: 12em;
+    line-height:1;
+    margin: 0;
+    color:#8c1515;
+
+    @media @tablet {
+      font-size:6em;
+    }
+  }
+
+  p{
+  
+  padding:0;
+  margin:0 auto;
+  font-family:@med-graphics;
+  line-height:1.4;
+  font-size:0.9em;
+
+  &.date{
+  font-size:2em;
+  line-height:1.2;
+
+  }
+  }
+
+}
+
